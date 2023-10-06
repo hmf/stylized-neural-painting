@@ -206,3 +206,13 @@ If you use our code for your research, please cite the following paper:
 }
 ``````
 
+# Local Changes
+
+
+user@node:~/VSCodeProjects$ cd stylized-neural-painting/
+user@node:~/VSCodeProjects/stylized-neural-painting$ git config user.name "Hugo Ferreira"
+user@node:~/VSCodeProjects/stylized-neural-painting$ git config user.email user@inescporto.pt
+
+
+
+
