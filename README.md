@@ -214,5 +214,42 @@ user@node:~/VSCodeProjects/stylized-neural-painting$ git config user.name "Hugo 
 user@node:~/VSCodeProjects/stylized-neural-painting$ git config user.email user@inescporto.pt
 
 
+[GDrive 3](https://github.com/glotlabs/gdrive)
+
+1. https://stackoverflow.com/questions/25010369/wget-curl-large-file-from-google-drive/63781195#63781195
+  1. https://github.com/wkentaro/gdown
+
+
+https://drive.google.com/file/d/1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG/view?usp=sharing
+wget https://drive.google.com/file/d/1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG/checkpoints_G_oilpaintbrush.zip
+
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG' -O checkpoints_G_oilpaintbrush.zip
+
+[gdown](https://github.com/wkentaro/gdown) already in the `Requirements.txt` file
+open a bash session in the container
+get link
+gdown 1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG -O checkpoints_G_oilpaintbrush.zip
+vscode ➜ /workspaces/stylized-neural-painting (try_out_1) $ gdown 1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG -O checkpoints_G_oilpaintbrush.zip
+Downloading...
+From (uriginal): https://drive.google.com/uc?id=1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG
+From (redirected): https://drive.google.com/uc?id=1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG&confirm=t&uuid=1cc0579a-564c-4e26-9fce-e14b2933c261
+To: /workspaces/stylized-neural-painting/checkpoints_G_oilpaintbrush.zip
+100%|█████████████████████████████████████████████████████████████████████████████████████████████| 181M/181M [00:06<00:00, 27.3MB/s]
+
+hmf@cc-cese-52:~/VSCodeProjects/stylized-neural-painting$ zipinfo ./checkpoints_G_oilpaintbrush.zip 
+Archive:  ./checkpoints_G_oilpaintbrush.zip
+Zip file size: 181018148 bytes, number of entries: 2
+drwx---     3.1 fat        0 bx stor 20-Nov-16 19:21 checkpoints_G_oilpaintbrush/
+-rw-a--     3.1 fat 217149268 bx defN 20-Nov-03 14:19 checkpoints_G_oilpaintbrush/last_ckpt.pt
+2 files, 217149268 bytes uncompressed, 181017766 bytes compressed:  16.6%
+
+
+
+
+
+
+
+
+
 
 
