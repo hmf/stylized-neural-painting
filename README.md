@@ -229,21 +229,198 @@ wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1sqWh
 open a bash session in the container
 get link
 gdown 1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG -O checkpoints_G_oilpaintbrush.zip
+
+
+Make sure [gdown](https://github.com/wkentaro/gdown) is installed. This can be installed via `pip`. It is already installed via the `Requirements.txt` file, so it is also available in the Dev container. 
+
+Get the Google Drive download links of the pre-trained **neural renderers**:
+
+1. [oil-paint brush](https://drive.google.com/file/d/1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG/view?usp=sharing)
+1. [watercolor ink](https://drive.google.com/file/d/19Yrj15v9kHvWzkK9o_GSZtvQaJPmcRYQ/view?usp=sharing)
+1. [marker pen](https://drive.google.com/file/d/1XsjncjlSdQh2dbZ3X1qf1M8pDc8GLbNy/view?usp=sharing)
+1. [color tapes](https://drive.google.com/file/d/162ykmRX8TBGVRnJIof8NeqN7cuwwuzIF/view?usp=sharing)
+
+Extract the IDs from each link above:
+
+1. oil-paint brush: `1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG`
+1. watercolor ink: `19Yrj15v9kHvWzkK9o_GSZtvQaJPmcRYQ`
+1. marker pen: `1XsjncjlSdQh2dbZ3X1qf1M8pDc8GLbNy`
+1. color tapes: `162ykmRX8TBGVRnJIof8NeqN7cuwwuzIF`
+
+Download the files with `gdown`:
+
+1. `gdown 1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG -O checkpoints_G_oilpaintbrush.zip`
+1. `gdown 19Yrj15v9kHvWzkK9o_GSZtvQaJPmcRYQ -O checkpoints_G_rectangle.zip`
+1. `gdown 1XsjncjlSdQh2dbZ3X1qf1M8pDc8GLbNy -O checkpoints_G_markerpen.zip`
+1. `gdown 162ykmRX8TBGVRnJIof8NeqN7cuwwuzIF -O checkpoints_G_watercolor.zip`
+
+Here is an example:
+
+<!--- cSpell:disable --->
+```shell
 vscode ➜ /workspaces/stylized-neural-painting (try_out_1) $ gdown 1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG -O checkpoints_G_oilpaintbrush.zip
 Downloading...
 From (uriginal): https://drive.google.com/uc?id=1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG
 From (redirected): https://drive.google.com/uc?id=1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG&confirm=t&uuid=1cc0579a-564c-4e26-9fce-e14b2933c261
 To: /workspaces/stylized-neural-painting/checkpoints_G_oilpaintbrush.zip
 100%|█████████████████████████████████████████████████████████████████████████████████████████████| 181M/181M [00:06<00:00, 27.3MB/s]
+```
+<!--- cSpell:enable --->
 
+You can confirm the content of the archives with `zipinfo` Here is an example:
+
+<!--- cSpell:disable --->
+```shell
 hmf@cc-cese-52:~/VSCodeProjects/stylized-neural-painting$ zipinfo ./checkpoints_G_oilpaintbrush.zip 
 Archive:  ./checkpoints_G_oilpaintbrush.zip
 Zip file size: 181018148 bytes, number of entries: 2
 drwx---     3.1 fat        0 bx stor 20-Nov-16 19:21 checkpoints_G_oilpaintbrush/
 -rw-a--     3.1 fat 217149268 bx defN 20-Nov-03 14:19 checkpoints_G_oilpaintbrush/last_ckpt.pt
 2 files, 217149268 bytes uncompressed, 181017766 bytes compressed:  16.6%
+```
+<!--- cSpell:enable --->
+
+Unzip the contents:
+
+1. `unzip checkpoints_G_oilpaintbrush.zip`
+1. `unzip checkpoints_G_rectangle.zip`
+1. `unzip checkpoints_G_markerpen.zip`
+1. `unzip checkpoints_G_watercolor.zip`
+
+Here is an example:
+
+<!--- cSpell:disable --->
+```shell
+vscode ➜ /workspaces/stylized-neural-painting (try_out_1) $ unzip checkpoints_G_watercolor.zip
+Archive:  checkpoints_G_watercolor.zip
+   creating: checkpoints_G_rectangle/
+  inflating: checkpoints_G_rectangle/last_ckpt.pt  
+```
+<!--- cSpell:enable --->
+
+Make sure these files are not added to the Git repository by adding these lines to your `.gitignore`:
+
+```
+checkpoints_G_oilpaintbrush.zip
+checkpoints_G_rectangle.zip
+checkpoints_G_markerpen.zip
+checkpoints_G_watercolor.zip
+checkpoints_G_oilpaintbrush
+checkpoints_G_rectangle
+checkpoints_G_markerpen
+checkpoints_G_watercolor
+```
+
+Get the Google Drive download links of the pre-trained **lightweight neural renderers**:
+
+1. [oil-paint brush (lightweight)](https://drive.google.com/file/d/1kcXsx2nDF3b3ryYOwm3BjmfwET9lfFht/view?usp=sharing)
+1. [watercolor ink (lightweight)](https://drive.google.com/file/d/1FoclmDOL6d1UT12-aCDwYMcXQKSK6IWA/view?usp=sharing)
+1. [marker pen (lightweight)](https://drive.google.com/file/d/1pP99btR2XV3GtDHFXd8klpdQRSc0prLx/view?usp=sharing)
+1. [color tapes (lightweight)](https://drive.google.com/file/d/1aHyc9ukObmCeaecs8o-a6p-SCjeKlvVZ/view?usp=sharing)
 
 
+Extract the IDs from each link above:
+
+1. oil-paint brush (lightweight):`1kcXsx2nDF3b3ryYOwm3BjmfwET9lfFht`
+1. watercolor ink (lightweight): `1FoclmDOL6d1UT12-aCDwYMcXQKSK6IWA`
+1. marker pen (lightweight):     `1pP99btR2XV3GtDHFXd8klpdQRSc0prLx`
+1. color tapes (lightweight):    `1aHyc9ukObmCeaecs8o-a6p-SCjeKlvVZ`
+
+Download the files with `gdown`:
+
+1. `gdown 1kcXsx2nDF3b3ryYOwm3BjmfwET9lfFht -O checkpoints_G_oilpaintbrush_light.zip`
+1. `gdown 1FoclmDOL6d1UT12-aCDwYMcXQKSK6IWA -O checkpoints_G_rectangle_light.zip`
+1. `gdown 1pP99btR2XV3GtDHFXd8klpdQRSc0prLx -O checkpoints_G_markerpen_light.zip`
+1. `gdown 1aHyc9ukObmCeaecs8o-a6p-SCjeKlvVZ -O checkpoints_G_watercolor_light.zip`
+
+
+Unzip the contents:
+
+1. `unzip checkpoints_G_oilpaintbrush_light.zip`
+1. `unzip checkpoints_G_rectangle_light.zip`
+1. `unzip checkpoints_G_markerpen_light.zip`
+1. `unzip checkpoints_G_watercolor_light.zip`
+
+Make sure these files are not added to the Git repository by adding these lines to your `.gitignore`:
+
+```
+```
+
+
+
+<!--- cSpell:disable --->
+```shell
+```
+<!--- cSpell:enable --->
+
+
+----------------
+
+<details close>
+<summary>Output</summary>
+<br>
+</details>
+
+<!--- cSpell:disable -->
+<details close>
+<summary>Output:</summary>
+<br>
+
+```shell
+TODO
+```
+
+</details>
+<!--- cSpell:enable -->
+
+
+
+<!--- cSpell:disable --->
+```shell
+```
+<!--- cSpell:enable --->
+
+
+<!--- cSpell:disable --->
+```shell
+```
+<!--- cSpell:enable --->
+
+
+<!--- cSpell:disable --->
+```shell
+```
+<!--- cSpell:enable --->
+
+
+<!--- cSpell:disable -->
+<details close>
+<summary>Output:</summary>
+<br>
+
+```shell
+TODO
+```
+
+</details>
+<!--- cSpell:enable -->
+
+<!--- cSpell:disable -->
+<details close>
+<summary>Output:</summary>
+<br>
+
+```shell
+TODO
+```
+
+</details>
+<!--- cSpell:enable -->
+
+<!--- cSpell:disable --->
+```shell
+```
+<!--- cSpell:enable --->
 
 
 
