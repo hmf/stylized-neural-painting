@@ -407,15 +407,19 @@ python demo_prog.py --img_path ./test_images/apple.jpg --canvas_color 'white' --
 ```
 <!--- cSpell:enable --->
 
+The output seems to be "blockier" but has the same behaviour (same iterations). GPU use does seem to be less (`nvidia-smi -l 1` reports 0 to 13%). Results are significantly worse visually. Processing time seems to be about the same. 
 
+> Note: this overwrites the previous results. 
 
+## Rendering directly from `m x m` image grids
 
 <!--- cSpell:disable --->
 ```shell
+python demo.py --img_path ./test_images/apple.jpg --canvas_color 'white' --max_m_strokes 500 --m_grid 5 --renderer oilpaintbrush --renderer_checkpoint_dir checkpoints_G_oilpaintbrush --net_G zou-fusion-net
 ```
 <!--- cSpell:enable --->
 
-
+Still an iterative process (one stroke per iteration). It now divides the image into a grid and places strokes within each grid then optimizes. Seems to be about the same quality as the first full model. 
 
 
 
