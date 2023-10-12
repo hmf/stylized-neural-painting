@@ -1,3 +1,5 @@
+__pycache__
+
 checkpoints_G_oilpaintbrush.zip
 checkpoints_G_rectangle.zip
 checkpoints_G_markerpen.zip
@@ -15,4 +17,6 @@ checkpoints_G_oilpaintbrush_light
 checkpoints_G_rectangle_light
 checkpoints_G_markerpen_light
 checkpoints_G_watercolor_light
+
+output
 

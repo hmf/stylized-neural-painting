@@ -321,18 +321,21 @@ Get the Google Drive download links of the pre-trained **lightweight neural rend
 
 Extract the IDs from each link above:
 
+<!--- cSpell:disable --->
 1. oil-paint brush (lightweight):`1kcXsx2nDF3b3ryYOwm3BjmfwET9lfFht`
 1. watercolor ink (lightweight): `1FoclmDOL6d1UT12-aCDwYMcXQKSK6IWA`
 1. marker pen (lightweight):     `1pP99btR2XV3GtDHFXd8klpdQRSc0prLx`
 1. color tapes (lightweight):    `1aHyc9ukObmCeaecs8o-a6p-SCjeKlvVZ`
+<!--- cSpell:enable --->
 
 Download the files with `gdown`:
 
+<!--- cSpell:disable --->
 1. `gdown 1kcXsx2nDF3b3ryYOwm3BjmfwET9lfFht -O checkpoints_G_oilpaintbrush_light.zip`
 1. `gdown 1FoclmDOL6d1UT12-aCDwYMcXQKSK6IWA -O checkpoints_G_rectangle_light.zip`
 1. `gdown 1pP99btR2XV3GtDHFXd8klpdQRSc0prLx -O checkpoints_G_markerpen_light.zip`
 1. `gdown 1aHyc9ukObmCeaecs8o-a6p-SCjeKlvVZ -O checkpoints_G_watercolor_light.zip`
-
+<!--- cSpell:enable --->
 
 Unzip the contents:
 
@@ -344,7 +347,75 @@ Unzip the contents:
 Make sure these files are not added to the Git repository by adding these lines to your `.gitignore`:
 
 ```
+checkpoints_G_oilpaintbrush_light.zip
+checkpoints_G_rectangle_light.zip
+checkpoints_G_markerpen_light.zip
+checkpoints_G_watercolor_light.zip
+checkpoints_G_oilpaintbrush_light
+checkpoints_G_rectangle_light
+checkpoints_G_markerpen_light
+checkpoints_G_watercolor_light
 ```
+
+# Reproducing results
+
+Add `output` to `.gitignore`. Execute the following command:
+
+## Progressive rendering
+
+<!--- cSpell:disable --->
+```shell
+python demo_prog.py --img_path ./test_images/apple.jpg --canvas_color 'white' --max_m_strokes 500 --max_divide 5 --renderer oilpaintbrush --renderer_checkpoint_dir checkpoints_G_oilpaintbrush --net_G zou-fusion-net
+```
+<!--- cSpell:enable --->
+
+Generation of the image is a lengthy process. It takes 494 iterations. An output (PNG) is generated for each iteration. A final `MP4` file ias also generated. The algorithm iterates through 5 grid scales (`--max_divide`). On each grid scale it select, applies and optimizes a 9 strokes sequentially. Output of each iteration shows the G-loss. Two windows also appear and show the original image and the rendered "painting". This can be switched off with the `--disable_preview` command line flag. Only small amount of GPU is used (about 50%). 
+
+This process is to slow. It also seems to be deterministic. The [command](https://imagemagick.org/script/compare.php):
+
+<!--- cSpell:disable --->
+```shell
+hmf@gandalf:/mnt/ssd2/hmf/tmp$ compare -compose src  apple_rendered_stroke_0495.png apple_rendered_stroke_0495.png diff.png
+```
+<!--- cSpell:enable --->
+
+generated an empty image. We also have:
+
+<!--- cSpell:disable --->
+```shell
+hmf@gandalf:/mnt/ssd2/hmf/tmp$ compare -verbose -metric AE apple_rendered_stroke_0495.png apple_rendered_stroke_0495.png diff.png
+apple_rendered_stroke_0495.png PNG 512x512 512x512+0+0 8-bit sRGB 369962B 0.040u 0:00.045
+apple_rendered_stroke_0495.png PNG 512x512 512x512+0+0 8-bit sRGB 369962B 0.040u 0:00.044
+Image: apple_rendered_stroke_0495.png
+  Channel distortion: AE
+    red: 0
+    green: 0
+    blue: 0
+    alpha: 0
+    all: 0
+apple_rendered_stroke_0495.png=>diff.png PNG 512x512 512x512+0+0 8-bit sRGB 205625B 0.910u 0:00.243
+```
+<!--- cSpell:enable --->
+
+Other [alternatives](https://askubuntu.com/questions/209517/does-diff-exist-for-images) for image comparison exist.
+
+## Progressive rendering
+
+<!--- cSpell:disable --->
+```shell
+python demo_prog.py --img_path ./test_images/apple.jpg --canvas_color 'white' --max_m_strokes 500 --max_divide 5 --renderer oilpaintbrush --renderer_checkpoint_dir checkpoints_G_oilpaintbrush_light --net_G zou-fusion-net-light
+```
+<!--- cSpell:enable --->
+
+
+
+
+<!--- cSpell:disable --->
+```shell
+```
+<!--- cSpell:enable --->
+
+
 
 
 
