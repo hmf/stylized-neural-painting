@@ -10,6 +10,8 @@ import utils
 import matplotlib.pyplot as plt
 import numpy as np
 
+import renderer
+
 # Decide which device we want to run on
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -95,7 +97,7 @@ def init_net(net, init_type='normal', init_gain=0.02, gpu_ids=[]):
     return net
 
 
-def define_G(rdrr, netG, init_type='normal', init_gain=0.02, gpu_ids=[]):
+def define_G(rdrr: renderer.Renderer, netG, init_type='normal', init_gain=0.02, gpu_ids=[]):
     net = None
     if netG == 'plain-dcgan':
         net = DCGAN(rdrr)
@@ -323,7 +325,7 @@ class ZouFCNFusionLight(nn.Module):
 
 
 class UNet(torch.nn.Module):
-    def __init__(self, rdrr):
+    def __init__(self, rdrr: renderer.Renderer):
         """
         In the constructor we instantiate two nn.Linear modules and assign them as
         member variables.

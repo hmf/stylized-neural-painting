@@ -209,27 +209,11 @@ If you use our code for your research, please cite the following paper:
 # Local Changes
 
 
+```bash
 user@node:~/VSCodeProjects$ cd stylized-neural-painting/
 user@node:~/VSCodeProjects/stylized-neural-painting$ git config user.name "Hugo Ferreira"
 user@node:~/VSCodeProjects/stylized-neural-painting$ git config user.email user@inescporto.pt
-
-
-[GDrive 3](https://github.com/glotlabs/gdrive)
-
-1. https://stackoverflow.com/questions/25010369/wget-curl-large-file-from-google-drive/63781195#63781195
-  1. https://github.com/wkentaro/gdown
-
-
-https://drive.google.com/file/d/1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG/view?usp=sharing
-wget https://drive.google.com/file/d/1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG/checkpoints_G_oilpaintbrush.zip
-
-wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG' -O checkpoints_G_oilpaintbrush.zip
-
-[gdown](https://github.com/wkentaro/gdown) already in the `Requirements.txt` file
-open a bash session in the container
-get link
-gdown 1sqWhgBKqaBJggl2A8sD1bLSq2_B1ScMG -O checkpoints_G_oilpaintbrush.zip
-
+```
 
 Make sure [gdown](https://github.com/wkentaro/gdown) is installed. This can be installed via `pip`. It is already installed via the `Requirements.txt` file, so it is also available in the Dev container. 
 
